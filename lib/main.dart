@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:jason_practice/screen/album/provider/album_provider.dart';
 import 'package:jason_practice/screen/comment/provider/comment_provider.dart';
 import 'package:jason_practice/screen/country/provider/country_provider.dart';
@@ -10,6 +11,13 @@ import 'package:jason_practice/utils/routes.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+    ],
+  );
+
   runApp(
     MultiProvider(
       providers: [
@@ -31,12 +39,16 @@ void main() {
         ChangeNotifierProvider.value(
           value: UserProvider(),
         ),
-
         ChangeNotifierProvider.value(
           value: CountryProvider(),
         ),
       ],
       child: MaterialApp(
+        theme: ThemeData(
+          appBarTheme: const AppBarTheme(
+              iconTheme: IconThemeData(color: Colors.blueAccent),
+              centerTitle: true),
+        ),
         debugShowCheckedModeBanner: false,
         routes: screen,
       ),

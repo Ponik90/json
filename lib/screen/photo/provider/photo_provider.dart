@@ -8,5 +8,6 @@ class PhotoProvider with ChangeNotifier {
 
   Future<void> getPhotoList() async {
     photoJsonList = await helper.photoJson();
+    notifyListeners();
   }
 }

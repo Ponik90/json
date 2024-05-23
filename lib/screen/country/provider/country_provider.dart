@@ -10,5 +10,6 @@ class CountryProvider with ChangeNotifier {
   Future<void> getCountryData()
   async {
     countryList= await helper.countryJson();
+    notifyListeners();
   }
 }

@@ -24,13 +24,18 @@ class _UserScreenState extends State<UserScreen> {
   Widget build(BuildContext context) {
     providerW = context.watch<UserProvider>();
     providerR = context.read<UserProvider>();
-    return ListView.builder(
-      itemCount: providerW!.userJsonList.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text("${providerW!.userJsonList[index].address!.geo!.lat}"),
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("User Json"),
+      ),
+      body: ListView.builder(
+        itemCount: providerW!.userJsonList.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text("${providerW!.userJsonList[index].address!.geo!.lat}"),
+          );
+        },
+      ),
     );
   }
 }

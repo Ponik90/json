@@ -1,11 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jason_practice/screen/album/view/album_screen.dart';
-import 'package:jason_practice/screen/comment/view/comment_screen.dart';
-import 'package:jason_practice/screen/country/view/country_screen.dart';
-import 'package:jason_practice/screen/photo/view/photo_screen.dart';
-import 'package:jason_practice/screen/post/view/post_screen.dart';
-import 'package:jason_practice/screen/todos/view/todos_screen.dart';
-import 'package:jason_practice/screen/user/view/user_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,51 +10,67 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 7,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text("Json Practice"),
-          centerTitle: true,
-          bottom: const TabBar(
-            tabs: [
-              Tab(
-                text: "Country",
-              ),
-              Tab(
-                text: "Post",
-              ),
-              Tab(
-                text: "Comment",
-              ),
-              Tab(
-                text: "Albums",
-              ),
-              Tab(
-                text: "Photos",
-              ),
-              Tab(
-                text: "Todos",
-              ),
-              Tab(
-                text: "User",
-              ),
-
-            ],
-          ),
-        ),
-        body: const TabBarView(
-          children: [
-            CountryScreen(),
-            PostScreen(),
-            CommentScreen(),
-            AlbumScreen(),
-            PhotoScreen(),
-            TodosScreen(),
-            UserScreen(),
-          ],
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Json List"),
       ),
+      body: Column(
+        children: [
+          json(
+            icon: Icons.local_post_office,
+            name: "Post Json",
+            link: 'postJson',
+          ),
+          json(
+            icon: Icons.comment,
+            name: "Comment Json",
+            link: 'commentJson',
+          ),
+          json(
+            icon: Icons.photo_album_rounded,
+            name: "Album Json",
+            link: 'albumJson',
+          ),
+          json(
+            icon: Icons.photo,
+            name: "Photos Json",
+            link: 'photoJson',
+          ),
+          json(
+            icon: Icons.check_box,
+            name: "Todos Json",
+            link: 'todosJson',
+          ),
+          json(
+            icon: Icons.person,
+            name: "User Json",
+            link: 'userJson',
+          ),
+          json(
+            icon: Icons.flag,
+            name: "Country Json",
+            link: 'countryJson',
+          ),
+          json(
+            icon: Icons.newspaper_outlined,
+            name: "News Json",
+            link: 'newsJson',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget json({required icon, required name, required link}) {
+    return ListTile(
+      onTap: () {
+        Navigator.pushNamed(context, link);
+      },
+      leading: Icon(
+        icon,
+        color: Colors.blue,
+      ),
+      title: Text(name),
     );
   }
 }

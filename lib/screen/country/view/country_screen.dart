@@ -10,24 +10,34 @@ class CountryScreen extends StatefulWidget {
 }
 
 class _CountryScreenState extends State<CountryScreen> {
-  
   CountryProvider? providerR;
   CountryProvider? providerW;
+
   @override
   void initState() {
-    
     super.initState();
-    
+
     context.read<CountryProvider>().getCountryData();
   }
+
   @override
   Widget build(BuildContext context) {
-    providerW=context.watch<CountryProvider>();
-    providerR=context.read<CountryProvider>();
-    return ListView.builder(itemCount: providerW!.countryList.length,itemBuilder:  (context, index) {
-      return ListTile(
-        leading: Image.asset(providerW!.countryList[index].flagsModel!.png!),
-      );
-    },);
+    providerW = context.watch<CountryProvider>();
+    providerR = context.read<CountryProvider>();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Country Json"),
+      ),
+      body: ListView.builder(
+        itemCount: providerW!.countryList.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: Image.network(
+                providerW!.countryList[index].flagsModel!.png!,
+                fit: BoxFit.cover),
+          );
+        },
+      ),
+    );
   }
 }

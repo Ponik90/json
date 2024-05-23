@@ -24,13 +24,18 @@ class _PhotoScreenState extends State<PhotoScreen> {
   Widget build(BuildContext context) {
     providerW = context.watch<PhotoProvider>();
     providerR = context.read<PhotoProvider>();
-    return ListView.builder(
-      itemCount: providerW!.photoJsonList.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text("${providerW!.photoJsonList[index].title}"),
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Photo Json"),
+      ),
+      body: ListView.builder(
+        itemCount: providerW!.photoJsonList.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text("${providerW!.photoJsonList[index].title}"),
+          );
+        },
+      ),
     );
   }
 }

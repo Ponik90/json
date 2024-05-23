@@ -2,31 +2,23 @@ class CountryModel {
   String? region, subRegion;
 
   NameModel? nameModel;
-  CurrenciesModel? currenciesModel;
-  LanguagesModel? languagesModel;
   FlagsModel? flagsModel;
 
   CountryModel(
       {this.region,
       this.subRegion,
       this.nameModel,
-      this.currenciesModel,
-      this.languagesModel,
       this.flagsModel});
 
   factory CountryModel.mapToModel(Map m1) {
     return CountryModel(
       region: m1['region'],
       subRegion: m1['subRegion'],
-      currenciesModel: CurrenciesModel.mapToModel(
-        m1['currencies'],
-      ),
+
       flagsModel: FlagsModel.mapToModel(
         m1['flags'],
       ),
-      languagesModel: LanguagesModel.mapToModel(
-        m1['languages'],
-      ),
+
       nameModel: NameModel.mapToModel(
         m1['name'],
       ),
@@ -35,39 +27,15 @@ class CountryModel {
 }
 
 class NameModel {
-  String? name, official;
+  String? common, official;
 
-  NameModel({this.name, this.official});
+  NameModel({this.common, this.official});
 
   factory NameModel.mapToModel(Map m1) {
     return NameModel(
-      name: m1['name'],
+      common: m1['common'],
       official: m1['official'],
     );
-  }
-}
-
-class CurrenciesModel {
-  MdlModel? mdlModel;
-
-  CurrenciesModel({this.mdlModel});
-
-  factory CurrenciesModel.mapToModel(Map m1) {
-    return CurrenciesModel(
-      mdlModel: MdlModel.mapToModel(m1['MDL']),
-    );
-  }
-}
-
-class CapitalModel {}
-
-class LanguagesModel {
-  String? language;
-
-  LanguagesModel({this.language});
-
-  factory LanguagesModel.mapToModel(Map m1) {
-    return LanguagesModel(language: m1['ron']);
   }
 }
 
@@ -85,12 +53,4 @@ class FlagsModel {
   }
 }
 
-class MdlModel {
-  String? name, symbol;
 
-  MdlModel({this.name, this.symbol});
-
-  factory MdlModel.mapToModel(Map m1) {
-    return MdlModel(name: m1['name'], symbol: m1['symbol']);
-  }
-}

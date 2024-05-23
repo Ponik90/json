@@ -25,14 +25,19 @@ class _PostScreenState extends State<PostScreen> {
   Widget build(BuildContext context) {
     providerR = context.read<PostJsonProvider>();
     providerW = context.watch<PostJsonProvider>();
-    return ListView.builder(
-      itemCount: providerW!.postJsonList.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          leading: Text("${providerW!.postJsonList[index].id}"),
-          title: Text("${providerW!.postJsonList[index].title}"),
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Post Json"),
+      ),
+      body: ListView.builder(
+        itemCount: providerW!.postJsonList.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: Text("${providerW!.postJsonList[index].id}"),
+            title: Text("${providerW!.postJsonList[index].title}"),
+          );
+        },
+      ),
     );
   }
 }

@@ -24,13 +24,18 @@ class _TodosScreenState extends State<TodosScreen> {
   Widget build(BuildContext context) {
     providerW = context.watch<TodosProvider>();
     providerR = context.read<TodosProvider>();
-    return ListView.builder(
-      itemCount: providerW!.todosJsonList.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text("${providerW!.todosJsonList[index].title}"),
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Todos Json"),
+      ),
+      body: ListView.builder(
+        itemCount: providerW!.todosJsonList.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text("${providerW!.todosJsonList[index].title}"),
+          );
+        },
+      ),
     );
   }
 }

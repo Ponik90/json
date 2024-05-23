@@ -24,13 +24,18 @@ class _CommentScreenState extends State<CommentScreen> {
   Widget build(BuildContext context) {
     providerW = context.watch<CommentProvider>();
     providerR = context.read<CommentProvider>();
-    return ListView.builder(
-      itemCount: providerW!.commentJsonList.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text("${providerW!.commentJsonList[index].name}"),
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Comment Json"),
+      ),
+      body: ListView.builder(
+        itemCount: providerW!.commentJsonList.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text("${providerW!.commentJsonList[index].name}"),
+          );
+        },
+      ),
     );
   }
 }

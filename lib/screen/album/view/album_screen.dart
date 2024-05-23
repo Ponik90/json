@@ -24,13 +24,18 @@ class _AlbumScreenState extends State<AlbumScreen> {
   Widget build(BuildContext context) {
     providerW = context.watch<AlbumProvider>();
     providerR = context.read<AlbumProvider>();
-    return ListView.builder(
-      itemCount: providerW!.albumJsonList.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text("${providerW!.albumJsonList[index].title}"),
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Album Json"),
+      ),
+      body: ListView.builder(
+        itemCount: providerW!.albumJsonList.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text("${providerW!.albumJsonList[index].title}"),
+          );
+        },
+      ),
     );
   }
 }

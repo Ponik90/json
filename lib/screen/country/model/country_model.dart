@@ -4,21 +4,15 @@ class CountryModel {
   NameModel? nameModel;
   FlagsModel? flagsModel;
 
-  CountryModel(
-      {this.region,
-      this.subRegion,
-      this.nameModel,
-      this.flagsModel});
+  CountryModel({this.region, this.subRegion, this.nameModel, this.flagsModel});
 
   factory CountryModel.mapToModel(Map m1) {
     return CountryModel(
       region: m1['region'],
       subRegion: m1['subRegion'],
-
       flagsModel: FlagsModel.mapToModel(
         m1['flags'],
       ),
-
       nameModel: NameModel.mapToModel(
         m1['name'],
       ),
@@ -52,5 +46,3 @@ class FlagsModel {
     );
   }
 }
-
-

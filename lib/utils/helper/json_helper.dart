@@ -86,4 +86,12 @@ class JsonHelper {
 
     return countryData;
   }
+
+  Future<void> newsJson() async {
+    String newsString = await rootBundle.loadString("assets/json/news.json");
+
+    var newsModel = jsonDecode(newsString);
+
+    return newsModel;
+  }
 }

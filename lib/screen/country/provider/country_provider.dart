@@ -7,9 +7,8 @@ class CountryProvider with ChangeNotifier {
   JsonHelper helper = JsonHelper();
   List<CountryModel> countryList = [];
 
-  Future<void> getCountryData()
-  async {
-    countryList= await helper.countryJson();
+  Future<void> getCountryData() async {
+    countryList = await helper.countryJson();
     notifyListeners();
   }
 }

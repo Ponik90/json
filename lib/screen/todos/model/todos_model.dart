@@ -2,6 +2,7 @@ class TodosModel {
   String? title;
   int? userId, id;
   bool? completed;
+
   TodosModel({this.title, this.id, this.userId, this.completed});
 
   factory TodosModel.mapToModel(Map m1) {

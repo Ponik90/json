@@ -5,7 +5,7 @@ import '../model/post_json_model.dart';
 
 class PostJsonProvider with ChangeNotifier {
   JsonHelper helper = JsonHelper();
-  List<PostJsonModel> postJsonList=[];
+  List<PostJsonModel> postJsonList = [];
 
   Future<void> getPostJson() async {
     postJsonList = await helper.postJson();
